@@ -1,0 +1,61 @@
+﻿@model List<OrdemServicoViewModel>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+
+</script>
+
+
+<table id="example" class="table table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Nome Técnico</th>
+            <th>Cliente</th>
+            <th>Data Atendimento</th>
+            <th>Serviço</th>
+            <th>Valor</th>
+            <th>Observação</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model != null)
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.NomeTecnico</td>
+            <td>@item.NomeCliente</td>
+            <td>@item.DataInicioServico</td>
+            <td>@item.ItemOrdemServicos.FirstOrDefault().DescricaoServico</td>
+            <td>@item.ItemOrdemServicos.FirstOrDefault().Valor</td>
+            <td>@item.Observacao</td>
+
+        </tr>
+        }
+
+    </tbody>
+    @*<tfoot>
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Office</th>
+            <th>Age</th>
+            <th>Start date</th>
+            <th>Salary</th>
+        </tr>
+    </tfoot>*@
+</table>
+
+
+@*@section styles {
+    <link href="~/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+}*@
+
+
+@section scripts {
+    <script src="~/lib/jquery/dist/jquery.dataTables.min.js"></script>
+}
