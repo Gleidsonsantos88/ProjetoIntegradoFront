@@ -1,5 +1,100 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model OrdemServicoViewModel
+<div class="container">
+
+    @if (ViewData["MessageError"] != "" && ViewData["MessageError"] != null)
+    {
+        <div class="alert alert-danger"> @ViewData["MessageError"] </div>
+    }
+    <br />
+    <h2>Cadastrar ordem de serviço</h2>
+    <hr />
+    <br />
+
+    <form asp-controller="OrdemServico" asp-action="CriarOrdemServico" method="post">
+        <div class="row">
+            <div class="col-md-3 mb-3">
+                <label for="nomeCliente">Nome cliente</label>
+                <input type="text" class="form-control" id="nomeCliente" name="nomeCliente" placeholder="" value="" required="">
+            </div>
+
+            <div class="col-md-3 mb-3">
+                <label for="logradouro">Logradouro</label>
+                <input type="text" class="form-control" id="logradouro" name="Endereco.logradouro" placeholder="" value="" required="">
+            </div>
+
+            <div class="col-md-3 mb-3">
+                <label for="numero">Número</label>
+                <input type="text" class="form-control" id="numero" name="Endereco.numero" placeholder="" value="" required="">
+            </div>
+
+            <div class="col-md-3 mb-3">
+                <label for="bairro">Bairro</label>
+                <input type="text" class="form-control" id="bairro" name="Endereco.bairro" placeholder="" value="" required="">
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-2 mb-3">
+                <label for="cep">Cep</label>
+                <input type="text" class="form-control" id="cep" name="Endereco.cep" placeholder="" value="" required="">
+            </div>
+
+            <div class="col-md-2 mb-3">
+                <label for="uf">UF</label>
+                <input type="text" class="form-control" id="uf" name="Endereco.uf" placeholder="" value="" required="">
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label for="cidade">Cidade</label>
+                <input type="text" class="form-control" id="cidade" name="Endereco.cidade" placeholder="" value="" required="">
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label for="complemento">Complemento</label>
+                <input type="text" class="form-control" id="complemento" name="Endereco.complemento" placeholder="" value="" required="">
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="cep">Serviço</label>
+                <select class="custom-select d-block w-100" id="ServicoId" name="ItemOrdemServicos[0].ServicoId" required="">
+                    <option value="">Selecione</option>
+                    <option value="ee3996e2-4c69-46e2-8b38-5907db569039">Instalação de rede</option>
+                    <option value="508a1ed2-a700-4364-b54c-58a614c78aea">Instalação de interfone</option>
+                    <option value="26707827-0e39-4090-8c2e-dd51cb39887b">Instalação de ar condicionado</option>
+                    <option value="6791c0b3-436e-4701-91a8-454743e9b653">Instalação de cameras de segurança</option>
+                    <option value="d09085d3-7a27-43f0-9b61-68b44c252489">Configurar de rede wifi</option>
+                    <option value="e55d8659-bfde-4d29-a5d9-ad90c679d052">Instalação de alarme</option>
+                </select>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label for="cep">Técnico</label>
+                <select class="custom-select d-block w-100" id="tecnico" name="tecnicoId" required="">
+                    <option value="">Selecione</option>
+                    <option value="f98f5fd2-407a-49dd-ab31-ee2603e78256">Carlos Eduardo</option>
+                    <option value="ea532ad1-0fc8-4638-b8eb-4d3b3936c695">Gleidson Jeferson</option>
+                </select>
+            </div>
+
+            <div class="col-md-2 mb-3">
+                <label for="valorTotal">Valor</label>
+                <input type="number" class="form-control" id="valorTotal" name="valorTotal" placeholder="" value="" required="">
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <label for="observacao">Observação</label>
+                <textarea type="text" class="form-control" id="observacao" name="observacao" placeholder="" value="">
+                </textarea>
+            </div>
+        </div>
+        <br />
+        <button class="w-30 btn btn-lg btn-primary" type="submit">Salvar</button>
+    </form>
+</div>
